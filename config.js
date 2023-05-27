@@ -11,10 +11,10 @@ const config = {
         development: {
             dialect: 'postgres',
             host: 'localhost',
-            port: 7000,
+            port: 5432,
             username: 'postgres',
             password: 'PacoRo0t',
-            database: 'example',
+            database: 'tao',
             define: {
                 timestamps: true,
                 underscoredAll: true
