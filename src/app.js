@@ -43,6 +43,14 @@ app.get('/', (req, res) => {
 
 app.use(baseUrl, usersRouter)
 
+app.get('*', (req, res) => {
+    responses.error({
+        res,
+        status: 404,
+        message: 'The URL requested, does not exist'
+    })
+})
+
 app.listen(port, () => {
     console.log(`Server running on: ${host}:${port}`)
 })

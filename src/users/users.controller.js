@@ -22,6 +22,20 @@ const userController = {
   findAllUsers: async () => {
     const data = await Users.findAll()
     return data
+  },
+
+  editUser: async (id, userObj) => {
+    const data = await Users.update(userObj, {
+      where: {id}
+    })
+
+    return data
+  },
+
+  deleteUser: async(id) => {
+    const data = await Users.destroy({
+      where: {id}
+    })
   }
 }
 

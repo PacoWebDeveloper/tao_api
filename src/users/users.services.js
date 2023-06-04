@@ -55,6 +55,39 @@ const userServices = {
           message: 'Users not found'
         })
       })
+  },
+
+  patchUser: (req, res) => {
+    const id = req.query.id
+    const userObj = req.body
+    userController.editUser(id, userObj)
+      .then(data => {
+        responses.success({
+          res,
+          status: 200,
+          message: 'User updated successfully',
+          data
+        })
+      })
+      .catch(err => {
+        responses.error({
+          res, 
+          status: 304,
+          data: err
+        })
+      })
+  },
+
+  deleteUser: (req, res) => {
+    const id = req.query.id
+    userController.deleteUser(id)
+      .then(data => {
+        responses.success({
+        res,
+        status: 200,
+        message: 'User deleted successfully'
+      })
+      })
   }
 }
 
