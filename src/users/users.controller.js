@@ -24,6 +24,18 @@ const userController = {
     return data
   },
 
+  findUserById: async (id) => {
+    const data = await Users.findByPk(id)
+    return data
+  },
+
+  findUserByEmail: async (email) => {
+    const data = await Users.findOne({
+      where: {email}
+    })
+    return data
+  },
+
   editUser: async (id, userObj) => {
     const data = await Users.update(userObj, {
       where: {id}

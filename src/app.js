@@ -9,6 +9,7 @@ const db = require('./utils/database')
 const initModels = require('./models/initModels')
 
 const usersRouter = require('./users/users.router')
+const authRouter = require('./auth/auth.router')
 const responses = require('./utils/handleResponses')
 
 const app = express()
@@ -42,6 +43,7 @@ app.get('/', (req, res) => {
 })
 
 app.use(baseUrl, usersRouter)
+app.use(baseUrl, authRouter)
 
 app.get('*', (req, res) => {
     responses.error({
