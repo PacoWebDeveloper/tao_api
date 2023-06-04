@@ -41,12 +41,19 @@ const userServices = {
   getAllUsers: (req,res) => {
     userController.findAllUsers()
       .then(data => {
-        responses.success({
-          status: 200,
-          data,
-          message: 'Users retreived successfully',
-          res
-        })
+        if (data.length > 0)
+          responses.success({
+            status: 200,
+            data,
+            message: 'Users retreived successfully',
+            res
+          })
+        else
+          responses.error({
+            res,
+            status: 404,
+            message: 'No users found'
+          })
       })
       .catch(err => {
         responses.error({
