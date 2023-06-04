@@ -1,7 +1,7 @@
 const { ExtractJwt, Strategy } = require('passport-jwt')
 const passport = require('passport')
 
-const  { findUserById } = require('../users/users.controllers')
+const  { findUserById } = require('../users/users.controller')
 const config = require('../../config').api
 
 const passportConfigs = {
