@@ -48,6 +48,44 @@ const activitiesService = {
           message: 'Error occurred when getting activities'
         })
       })
+  },
+
+  patchActivity: (req, res) => {
+    const id = req.query.id
+    const activityObj = req.body
+    
+    activitiesController.editActivity(id, activityObj)
+      .then(data => { console.log(data)
+        if (data[0] === 1) {
+          responses.success({
+            res,
+            status: 200,
+            data,
+            message: 'Activity updated successfully'
+          })
+        } else {
+          responses.error({
+            res,
+            status: 400,
+            message: 'Error ocurred when editing activity',
+            data,
+            fields: [
+              'name', 'description', 'start_date', 'end_date'
+            ]
+          })
+        }
+      })
+      .catch(err => {
+        responses.error({
+          res,
+          status: 304,
+          message: 'Error ocurred when editing activity',
+          data:  err,
+          fields: [
+            'name', 'description', 'start_date', 'end_date'
+          ]
+        })
+      })
   }
 }
 
