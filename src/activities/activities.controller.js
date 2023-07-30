@@ -55,6 +55,13 @@ const activitiesController = {
       return data
     }
     
+  },
+
+  deleteActivity: async (id) => {
+    const data = await Activities.destroy({
+      where: {id}
+    })
+    return data
   }
 }
 

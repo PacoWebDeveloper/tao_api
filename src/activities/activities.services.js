@@ -86,6 +86,27 @@ const activitiesService = {
           ]
         })
       })
+  },
+
+  deleteActivity: (req, res) => {
+    const { id } = req.query
+    activitiesController.deleteActivity(id)
+      .then(data => {
+        responses.success({
+          res,
+          status: 200,
+          message: 'Activity deleted successfully',
+          data
+        })
+      })
+      .catch(err => {
+        responses.error({
+          res,
+          status: 400,
+          message: 'Activiy could not be deleted',
+          data: err
+        })
+      })
   }
 }
 
