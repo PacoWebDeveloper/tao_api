@@ -12,7 +12,8 @@ const activitiesController = {
       name: activityObj.name,
       description: activityObj.description,
       start_date: startDate,
-      end_date: endDate
+      end_date: endDate,
+      userId: activityObj.userId
     }
 
     const data = await Activities.create(newActivity)

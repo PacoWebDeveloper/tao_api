@@ -2,7 +2,7 @@ const DataTypes = require('sequelize')
 
 const db = require('../utils/database')
 
-const Activities = db.define('Activities', {
+const Activities = db.define('activities', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true
