@@ -50,6 +50,35 @@ const activitiesService = {
       })
   },
 
+  getActivitiesByUserId: (req, res) => {
+    const userId = req.query.id
+
+    activitiesController.findAllActivitiesByUser(userId)
+      .then(data => {
+        if (data.length > 0)
+          responses.success({
+            res,
+            status: 200,
+            message: 'Activities retreived sucessfully',
+            data
+          })
+        else
+          responses.error({
+            res,
+            status: 404,
+            message: 'Activities not found'
+          })
+      })
+      .catch(err => {
+        responses.error({
+          res,
+          status: 400,
+          message: 'Error occurred when getting activities',
+          data: err
+        })
+      })
+  },
+
   patchActivity: (req, res) => {
     const id = req.query.id
     const activityObj = req.body

@@ -25,6 +25,14 @@ const activitiesController = {
     return data
   },
 
+  findAllActivitiesByUser: async(userId) => { 
+    const data = await Activities.findAll({
+      where: {userId}
+    })
+
+    return data
+  },
+
   editActivity: async (id, activityObj) => {
     let startDate = ''
     let endDate = ''
