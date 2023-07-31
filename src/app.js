@@ -10,6 +10,7 @@ const initModels = require('./models/initModels')
 
 const usersRouter = require('./users/users.router')
 const authRouter = require('./auth/auth.router')
+const activitiesRouter = require('./activities/activities.router')
 const responses = require('./utils/handleResponses')
 
 const app = express()
@@ -44,6 +45,7 @@ app.get('/', (req, res) => {
 
 app.use(baseUrl, usersRouter)
 app.use(baseUrl, authRouter)
+app.use(baseUrl, activitiesRouter)
 
 app.get('*', (req, res) => {
     responses.error({
