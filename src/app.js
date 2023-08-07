@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const config = require('../config')
 const { api } = config
 const host = api.host
@@ -15,6 +16,7 @@ const responses = require('./utils/handleResponses')
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
 db.authenticate()
